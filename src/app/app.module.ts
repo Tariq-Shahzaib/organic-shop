@@ -21,11 +21,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './auth-guard.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+
 // services
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
+import { CustomFormsModule } from 'ng2-validation';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,7 @@ import { CategoryService } from './category.service';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    CustomFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
