@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './auth-guard.service';
 // services
 import { AuthService } from './auth.service';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -45,14 +46,16 @@ import { AuthService } from './auth.service';
     NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'login', component: LoginComponent },
+
       {
         path: 'my/orders',
         component: MyOrdersComponent,
         canActivate: [AuthGuard],
       },
-      { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'login', component: LoginComponent },
+
       {
         path: 'order-success',
         component: OrderSuccessComponent,
@@ -77,7 +80,7 @@ import { AuthService } from './auth.service';
       },
     ]),
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
