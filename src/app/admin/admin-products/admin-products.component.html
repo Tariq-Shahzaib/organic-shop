@@ -1,6 +1,15 @@
 <p>
   <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
 </p>
+<p>
+  <input
+    #query
+    (keyup)="filter(query.value)"
+    type="text"
+    class="form-control"
+    placeholder="serch..."
+  />
+</p>
 <table class="table">
   <thead>
     <tr>
@@ -10,9 +19,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of products$ | async">
-      <td>{{ p.payload.val().title }}</td>
-      <td>{{ p.payload.val().price }}</td>
+    <tr *ngFor="let p of filtredProducts">
+      <td>{{ p.title }}</td>
+      <td>{{ p.price }}</td>
       <td>
         <a [routerLink]="['/admin/products/', p.key]">Edit</a>
       </td>
