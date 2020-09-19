@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row" *ngIf="product">
   <!---Left Portion-->
 
-  <div class="col-md-6">
+  <div class="col-md-6" *ngIf="product">
     <form #f="ngForm" (ngSubmit)="save(f.value)">
       <div class="form-group">
         <label for="title">Title</label>
@@ -13,8 +13,13 @@
           type="text"
           class="form-control"
           required
+          *ngIf="product.title"
         />
-        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+        <!---->
+        <div
+          class="alert alert-danger"
+          *ngIf="product && product.title.touched && product.title.invalid"
+        >
           Title Is Required
         </div>
       </div>
@@ -88,9 +93,13 @@
   </div>
   <!---Right Portion-->
 
-  <div class="col-md-6">
+  <div class="col-md-6" *ngIf="product">
     <div class="card" style="width: 18rem">
-      <img [src]="imageUrl.value" class="card-img-top" />
+      <img
+        [src]="product.imageUrl"
+        class="card-img-top"
+        *ngIf="product.imageUrl"
+      />
       <div class="card-body">
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">{{ product.price | currency: "USD":true }}</p>
