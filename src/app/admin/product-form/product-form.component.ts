@@ -12,6 +12,7 @@ import { CurrencyPipe } from '@angular/common';
 export class ProductFormComponent implements OnInit {
   categories$;
   product;
+  id;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -20,17 +21,25 @@ export class ProductFormComponent implements OnInit {
   ) {
     this.categories$ = categoryService.getCategories();
 
-    let id = this.route.snapshot.paramMap.get('id');
-    if (id)
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id)
       this.productService
-        .get(id)
+        .get(this.id)
         .take(1)
         .subscribe(p => (this.product = p.payload.val()));
   }
 
   ngOnInit(): void {}
+
   save(product) {
-    this.productService.create(product);
+    if (this.id) this.productService.update(this.id, product);
+    else this.productService.create(product);
+    this.router.navigate(['admin/products']);
+  }
+
+  delete() {
+    if (!confirm('Are you sure you want to delete this product?')) return;
+    this.productService.delete(this.id);
     this.router.navigate(['admin/products']);
   }
 }
