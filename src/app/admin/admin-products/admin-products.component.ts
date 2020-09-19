@@ -16,11 +16,10 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       .getall()
       .subscribe(
         products =>
-          (this.filtredProducts = this.products = products.map(a =>
-            a.payload.val()
-          ))
+          (this.filtredProducts = this.products = products.map(a => a))
       );
   }
+
   ngOnDestroy() {
     this.subscrition.unsubscribe();
   }

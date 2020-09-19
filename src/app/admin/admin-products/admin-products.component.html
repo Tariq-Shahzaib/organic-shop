@@ -20,10 +20,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let p of filtredProducts">
-      <td>{{ p.title }}</td>
-      <td>{{ p.price }}</td>
+      <td>{{ p.payload.val().title }}</td>
+      <td>{{ p.payload.val().price }}</td>
       <td>
-        <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+        <a [routerLink]="['/admin/products/', p.payload.key]">Edit</a>
       </td>
     </tr>
   </tbody>
