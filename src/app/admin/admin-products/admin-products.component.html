@@ -10,6 +10,39 @@
     placeholder="serch..."
   />
 </p>
+
+<data-table
+  [items="items"
+  ]
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)"
+>
+  <data-column-table
+    [property]="'title'"
+    [header]="'Title'"
+    [sortable]="true"
+    [resizeable]="true"
+  >
+  </data-column-table>
+
+  <data-column-table
+    [property]="'price'"
+    [header]="'Price'"
+    [sortable]="true"
+    [resizeable]="true"
+  >
+    <ng-template #dataTableCell let-item="product">
+      {{ product.price | currency: "USD":true }}
+    </ng-template>
+  </data-column-table>
+
+  <data-column-table [property]="$key">
+    <ng-template #dataTableCell let-item="product">
+      <a [routerLink]="['/admin/products/', p.payload.key]">Edit</a>
+    </ng-template>
+  </data-column-table>
+</data-table>
+
 <table class="table">
   <thead>
     <tr>

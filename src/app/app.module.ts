@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './auth-guard.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+import { DataTableModule } from 'angular-4-data-table';
 
 // services
 import { AuthService } from './auth.service';
@@ -41,9 +42,10 @@ import { CustomFormsModule } from 'ng2-validation';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent,
+    ProductFormComponent
   ],
   imports: [
+    DataTableModule,
     AppRoutingModule,
     BrowserModule,
     CustomFormsModule,
@@ -61,53 +63,53 @@ import { CustomFormsModule } from 'ng2-validation';
       {
         path: 'my/orders',
         component: MyOrdersComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
       },
 
       {
         path: 'order-success',
         component: OrderSuccessComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
       },
 
       {
         path: 'admin/products/new',
         component: ProductFormComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
       },
 
       {
         path: 'admin/products/:id',
         component: ProductFormComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
       },
 
       {
         path: 'admin/products',
         component: AdminProductsComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
       },
 
       {
         path: 'check-out',
         component: CheckOutComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
       },
 
       {
         path: 'admin/orders',
         component: AdminOrdersComponent,
-        canActivate: [AuthGuard],
-      },
-    ]),
+        canActivate: [AuthGuard]
+      }
+    ])
   ],
   providers: [
     AuthService,
     AuthGuard,
     UserService,
     CategoryService,
-    ProductService,
+    ProductService
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
