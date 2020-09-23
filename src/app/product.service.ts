@@ -11,6 +11,10 @@ export class ProductService {
     return this.db.list('/products').push(product);
   }
 
+  getkey() {
+    return this.db.list('/products').snapshotChanges();
+  }
+
   getall() {
     return this.db.list('/products').snapshotChanges();
   }

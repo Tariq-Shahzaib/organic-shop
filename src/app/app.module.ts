@@ -21,7 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './auth-guard.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
-
+import { ShoppingCartService } from './shopping-cart.service';
 // services
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
@@ -110,7 +110,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     AuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
