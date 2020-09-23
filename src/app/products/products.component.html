@@ -9,6 +9,7 @@
           <product-card
             [product]="p.payload.val()"
             [key]="p.payload.key"
+            [shopping-cart]="cart"
           ></product-card>
           <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
         </div>

@@ -7,14 +7,15 @@
     </p>
   </div>
 
-  <div class="card-footer">
+  <div *ngIf="showActions" class=" card-footer">
     <button
       (click)="addToCart(product, key)"
-      *ngIf="showActions"
       href="#"
       class="btn btn-primary btn-block"
     >
       Add to cart
     </button>
+
+    <div>{{ getQuantity() }}</div>
   </div>
 </div>
