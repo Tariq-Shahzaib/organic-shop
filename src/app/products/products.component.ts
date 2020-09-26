@@ -21,17 +21,19 @@ export class ProductsComponent {
     categoryService: CategoryService
   ) {
     productService.getall().subscribe(data => {
-      data.map(a => this.allProducts.push(a.payload.val()));
+      data.map(a => this.allProducts.push(a));
     });
 
     this.products = productService.getall().subscribe(data => {
-      data.map(a => this.productsForFilration.push(a.payload.val()));
+      data.map(a => this.productsForFilration.push(a));
 
       route.queryParamMap.subscribe(params => {
         this.category = params.get('category');
 
         this.filtredProducts = this.category
-          ? this.productsForFilration.filter(p => p.category === this.category)
+          ? this.productsForFilration.filter(
+              p => p.payload.val().category === this.category
+            )
           : this.allProducts;
       });
     });

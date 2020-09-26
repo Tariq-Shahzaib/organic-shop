@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
 
 // services
+import { ShoppingCartService } from './shopping-cart.service';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
@@ -110,7 +111,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     AuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
